@@ -1,4 +1,19 @@
 <h2>Registro de Usuario</h2>
 
+<form [formGroup]="usuarioForm" (ngSubmit)="enviar()" class="formulario">
+  <label>Nombre:</label>
+  <input type="text" formControlName="nombre" placeholder="Ingrese su nombre">
+  <div *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched">
+    <small>El nombre es obligatorio</small>
+  </div>
+
+  <label>Correo:</label>
+  <input type="email" formControlName="correo" placeholder="correo@ejemplo.com">
+  <div *ngIf="usuarioForm.get('correo')?.invalid && usuarioForm.get('correo')?.touched">
+    <small>Ingrese un correo válido</small>
+  </div>
+
+  <button type="submit" [disabled]="usuarioForm.invalid">Enviar</button>
+</form>
 
 
